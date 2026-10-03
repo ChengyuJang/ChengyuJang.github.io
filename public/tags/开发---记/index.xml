@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>开发 - 记 on Phoenix</title>
+    <link>//localhost:1313/tags/%E5%BC%80%E5%8F%91---%E8%AE%B0/</link>
+    <description>Recent content from Phoenix</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    <managingEditor>2388468249@qq.com (Phoenix)</managingEditor>
+    <webMaster>2388468249@qq.com (Phoenix)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Fri, 25 Sep 2026 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="//localhost:1313/tags/%E5%BC%80%E5%8F%91---%E8%AE%B0/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>QingWen</title>
+      <link>//localhost:1313/post/qingwen/</link>
+      <pubDate>Fri, 25 Sep 2026 00:00:00 &#43;0000</pubDate>
+      <author>2388468249@qq.com (Phoenix)</author>
+      <guid>//localhost:1313/post/qingwen/</guid>
+      <description>
+        <![CDATA[<h1>QingWen</h1><p>作者：Phoenix（2388468249@qq.com）</p>
+        
+          <h2 id="redis与sql的区别">
+<a class="header-anchor" href="#redis%e4%b8%8esql%e7%9a%84%e5%8c%ba%e5%88%ab"></a>
+Redis与SQL的区别
+</h2><table>
+	<thead>
+			<tr>
+					<th style="text-align: center">对比维度</th>
+					<th style="text-align: center">Redis</th>
+					<th style="text-align: center">SQL</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">类型</td>
+					<td style="text-align: center">NoSQL、键值型、内存数据库</td>
+					<td style="text-align: center">关系型、SQL 数据库</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">数据模型</td>
+					<td style="text-align: center">key-value；String、Hash、List、Set、ZSet、Stream</td>
+					<td style="text-align: center">表、行、列、外键、关系</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">Schema</td>
+					<td style="text-align: center">无固定 Schema，灵活</td>
+					<td style="text-align: center">需预定义表结构，约束严格</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">查询语言</td>
+					<td style="text-align: center">Redis 命令 / API</td>
+					<td style="text-align: center">SQL查询有通用格式</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">关系查询</td>
+					<td style="text-align: center">不支持 JOIN</td>
+					<td style="text-align: center">支持 JOIN、子查询、聚合</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">事务</td>
+					<td style="text-align: center">MULTI / EXEC，有限，通常不支持回滚</td>
+					<td style="text-align: center">BEGIN / COMMIT / ROLLBACK，ACID</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">并发</td>
+					<td style="text-align: center">单线程命令原子，Lua 原子</td>
+					<td style="text-align: center">MVCC、锁、隔离级别</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">持久化</td>
+					<td style="text-align: center">RDB / AOF，可能丢数据</td>
+					<td style="text-align: center">WAL / redo / undo，可靠性高</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">存储</td>
+					<td style="text-align: center">内存为主</td>
+					<td style="text-align: center">磁盘为主，内存缓存</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">性能</td>
+					<td style="text-align: center">低延迟、高吞吐，适合简单 KV</td>
+					<td style="text-align: center">复杂查询强，简单高频读写通常不如 Redis</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">扩展</td>
+					<td style="text-align: center">主从、哨兵、Cluster 分片</td>
+					<td style="text-align: center">主从、读写分离、分库分表</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">容量</td>
+					<td style="text-align: center">受内存限制</td>
+					<td style="text-align: center">受磁盘限制，通常更大</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">索引</td>
+					<td style="text-align: center">数据结构 / 模块，二级索引需设计</td>
+					<td style="text-align: center">B+树、哈希、全文等</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">典型场景</td>
+					<td style="text-align: center">缓存、会话、排行榜、计数器、队列</td>
+					<td style="text-align: center">交易、订单、用户、报表、复杂分析</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">典型产品</td>
+					<td style="text-align: center">Redis、Valkey、KeyDB、Dragonfly</td>
+					<td style="text-align: center">MySQL、PostgreSQL、Oracle、SQL Server、SQLite</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>Redis 是内存型 NoSQL 键值数据库，强调速度、简单结构和灵活扩展；
+SQL 数据库是关系型数据库，强调表结构、复杂查询、事务和强一致。
+二者混搭，Redis 做缓存和高速读写，SQL 数据库做持久化和业务数据管理。</p>
+        
+        <hr><p>本文2026-09-25首发于<a href='//localhost:1313/'>Phoenix</a>，最后修改于2026-09-25</p>]]>
+      </description>
+      
+        <category>Agent</category>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agent on Phoenix</title>
+    <link>//localhost:1313/categories/agent/</link>
+    <description>Recent content from Phoenix</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    <managingEditor>2388468249@qq.com (Phoenix)</managingEditor>
+    <webMaster>2388468249@qq.com (Phoenix)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Sun, 20 Sep 2026 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="//localhost:1313/categories/agent/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>QingWen</title>
+      <link>//localhost:1313/post/qingwen/</link>
+      <pubDate>Sun, 20 Sep 2026 00:00:00 &#43;0000</pubDate>
+      <author>2388468249@qq.com (Phoenix)</author>
+      <guid>//localhost:1313/post/qingwen/</guid>
+      <description>
+        <![CDATA[<h1>QingWen</h1><p>作者：Phoenix（2388468249@qq.com）</p>
+        
+          <h2 id="qingwen10">
+<a class="header-anchor" href="#qingwen10"></a>
+QingWen1.0
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># 启动后端</span>
+</span></span><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">activate</span> <span class="n">agent</span>
+</span></span><span class="line"><span class="cl"><span class="n">cd</span> <span class="n">D</span><span class="p">:</span>\<span class="n">pycharm</span>\<span class="n">PythonProject2</span>\<span class="n">QIngWen</span>
+</span></span><span class="line"><span class="cl"><span class="n">uvicorn</span> <span class="n">server</span><span class="p">:</span><span class="n">app</span> <span class="o">--</span><span class="n">reload</span> <span class="o">--</span><span class="n">port</span> <span class="mi">8000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Python静态服务器</span>
+</span></span><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">activate</span> <span class="n">agent</span>
+</span></span><span class="line"><span class="cl"><span class="n">cd</span> <span class="n">D</span><span class="p">:</span>\<span class="n">pycharm</span>\<span class="n">PythonProject2</span>\<span class="n">QIngWen</span>
+</span></span><span class="line"><span class="cl"><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span> <span class="mi">5500</span>
+</span></span></code></pre></div><h2 id="回答的还是很搞笑的需要在做一下迭代">
+<a class="header-anchor" href="#%e5%9b%9e%e7%ad%94%e7%9a%84%e8%bf%98%e6%98%af%e5%be%88%e6%90%9e%e7%ac%91%e7%9a%84%e9%9c%80%e8%a6%81%e5%9c%a8%e5%81%9a%e4%b8%80%e4%b8%8b%e8%bf%ad%e4%bb%a3"></a>
+回答的还是很搞笑的需要在做一下迭代
+</h2><h2 id="qingwen启动与测试">
+<a class="header-anchor" href="#qingwen%e5%90%af%e5%8a%a8%e4%b8%8e%e6%b5%8b%e8%af%95"></a>
+QingWen启动与测试
+</h2><h3 id="启动">
+<a class="header-anchor" href="#%e5%90%af%e5%8a%a8"></a>
+启动
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#切换环境</span>
+</span></span><span class="line"><span class="cl">conda activate agent
+</span></span><span class="line"><span class="cl"><span class="c1">#启动服务</span>
+</span></span><span class="line"><span class="cl">uvicorn server:app --reload --port <span class="m">8000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#进入</span>
+</span></span><span class="line"><span class="cl">redis-cli
+</span></span></code></pre></div><h3 id="测试感觉有点懵需要恶补fastapi了">
+<a class="header-anchor" href="#%e6%b5%8b%e8%af%95%e6%84%9f%e8%a7%89%e6%9c%89%e7%82%b9%e6%87%b5%e9%9c%80%e8%a6%81%e6%81%b6%e8%a1%a5fastapi%e4%ba%86"></a>
+测试（感觉有点懵需要恶补FastAPI了）
+</h3><blockquote>
+<p>post /chat -&gt; Try it out  -&gt; Request body {&ldquo;message&rdquo;: &ldquo;我想减肥&rdquo;} -&gt; Execute -&gt; 下方 Response body 复制返回的 session_id
+-&gt; Request body {&ldquo;session_id&rdquo;: &ldquo;刚才复制的那串&rdquo;,&ldquo;message&rdquo;: &ldquo;172，68公斤，28岁，男的&rdquo;} -&gt; Execute -&gt; Request body
+{&ldquo;session_id&rdquo;: &ldquo;同一串&rdquo;,&ldquo;message&rdquo;: &ldquo;一周练3天，不吃辣&rdquo;} -&gt; 下方 Response body stage 变成 &ldquo;done&rdquo;</p>
+        
+        <hr><p>本文2026-09-20首发于<a href='//localhost:1313/'>Phoenix</a>，最后修改于2026-09-20</p>]]>
+      </description>
+      
+        <category>Agent</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Agent协议</title>
+      <link>//localhost:1313/post/agent%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 &#43;0000</pubDate>
+      <author>2388468249@qq.com (Phoenix)</author>
+      <guid>//localhost:1313/post/agent%E5%8D%8F%E8%AE%AE/</guid>
+      <description>
+        <![CDATA[<h1>Agent协议</h1><p>作者：Phoenix（2388468249@qq.com）</p>
+        
+          <h2 id="mcp">
+<a class="header-anchor" href="#mcp"></a>
+MCP
+</h2><p>二者混搭，Redis 做缓存和高速读写，SQL 数据库做持久化和业务数据管理。</p>
+<h2 id="a2a">
+<a class="header-anchor" href="#a2a"></a>
+A2A
+</h2><p><strong>LangGraph</strong> 是当前生产环境，尤其是 Python 技术栈下的主流选择。它基于图状态机，通过持久化执行（如 PostgresSaver）支持时间旅行调试和崩溃恢复，其图状态结构非常适合需要审计追踪的受监管行业。不过，对于简单的顺序工具调用，它可能显得过于繁重</p>
+        
+        <hr><p>本文2026-09-15首发于<a href='//localhost:1313/'>Phoenix</a>，最后修改于2026-09-15</p>]]>
+      </description>
+      
+        <category>Agent</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Agent基础</title>
+      <link>//localhost:1313/post/agent%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 &#43;0000</pubDate>
+      <author>2388468249@qq.com (Phoenix)</author>
+      <guid>//localhost:1313/post/agent%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</guid>
+      <description>
+        <![CDATA[<h1>Agent基础</h1><p>作者：Phoenix（2388468249@qq.com）</p>
+        
+          
+        
+        <hr><p>本文2026-09-15首发于<a href='//localhost:1313/'>Phoenix</a>，最后修改于2026-09-15</p>]]>
+      </description>
+      
+        <category>Agent</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Agent 经典范式</title>
+      <link>//localhost:1313/post/agent-3/</link>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 &#43;0000</pubDate>
+      <author>2388468249@qq.com (Phoenix)</author>
+      <guid>//localhost:1313/post/agent-3/</guid>
+      <description>
+        <![CDATA[<h1>Agent 经典范式</h1><p>作者：Phoenix（2388468249@qq.com）</p>
+        
+          <h2 id="react">
+<a class="header-anchor" href="#react"></a>
+ReAct
+</h2><p>思考行动，边想边做，动态调整</p>
+<blockquote>
+<p>Thought -&gt; Action -&gt; Observation</p>
+</blockquote>
+<h2 id="plan-and-solve">
+<a class="header-anchor" href="#plan-and-solve"></a>
+Plan-and Solve
+</h2><p>三思而后行，Agent先生成完整行动计划，然后严格执行</p>
+<h2 id="reflection">
+<a class="header-anchor" href="#reflection"></a>
+Reflection
+</h2><p>可以反思，进行自我批评、修正</p>
+        
+        <hr><p>本文2026-09-15首发于<a href='//localhost:1313/'>Phoenix</a>，最后修改于2026-09-15</p>]]>
+      </description>
+      
+        <category>Agent</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Agent框架</title>
+      <link>//localhost:1313/post/agent%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 &#43;0000</pubDate>
+      <author>2388468249@qq.com (Phoenix)</author>
+      <guid>//localhost:1313/post/agent%E6%A1%86%E6%9E%B6/</guid>
+      <description>
+        <![CDATA[<h1>Agent框架</h1><p>作者：Phoenix（2388468249@qq.com）</p>
+        
+          <h2 id="langchain">
+<a class="header-anchor" href="#langchain"></a>
+LangChain
+</h2><p>二者混搭，Redis 做缓存和高速读写，SQL 数据库做持久化和业务数据管理。</p>
+<h2 id="langgraph">
+<a class="header-anchor" href="#langgraph"></a>
+LangGraph
+</h2><p><strong>LangGraph</strong> 是当前生产环境，尤其是 Python 技术栈下的主流选择。它基于图状态机，通过持久化执行（如 PostgresSaver）支持时间旅行调试和崩溃恢复，其图状态结构非常适合需要审计追踪的受监管行业。不过，对于简单的顺序工具调用，它可能显得过于繁重</p>
+        
+        <hr><p>本文2026-09-13首发于<a href='//localhost:1313/'>Phoenix</a>，最后修改于2026-09-13</p>]]>
+      </description>
+      
+        <category>Agent</category>
+      
+    </item>
+    
+  </channel>
+</rss>

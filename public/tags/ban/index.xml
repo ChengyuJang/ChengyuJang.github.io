@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ban on Phoenix</title>
+    <link>//localhost:1313/tags/ban/</link>
+    <description>Recent content from Phoenix</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    
+    <managingEditor>2388468249@qq.com (Phoenix)</managingEditor>
+    <webMaster>2388468249@qq.com (Phoenix)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Tue, 01 Sep 2026 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="//localhost:1313/tags/ban/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>Docker与Git</title>
+      <link>//localhost:1313/post/docker-and-git/</link>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 &#43;0000</pubDate>
+      <author>2388468249@qq.com (Phoenix)</author>
+      <guid>//localhost:1313/post/docker-and-git/</guid>
+      <description>
+        <![CDATA[<h1>Docker与Git</h1><p>作者：Phoenix（2388468249@qq.com）</p>
+        
+          <h2 id="set">
+<a class="header-anchor" href="#set"></a>
+Set
+</h2><p>Redis Set 是一个<strong>无序、不重复</strong>的字符串集合，底层使用 intset 或 hashtable 实现。它支持交集、并集、差集等集合运算，非常适合做标签、去重、共同好友、抽奖等场景。</p>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center">特点</th>
+					<th style="text-align: center">说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">无序</td>
+					<td style="text-align: center">元素没有固定顺序，不能按下标访问</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">不重复</td>
+					<td style="text-align: center">相同元素只会保留一个</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">集合运算</td>
+					<td style="text-align: center">支持交集、并集、差集</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">随机元素</td>
+					<td style="text-align: center">支持随机获取、随机弹出</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">底层结构</td>
+					<td style="text-align: center">整数集合 intset 或哈希表 hashtable</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">最大长度</td>
+					<td style="text-align: center">理论 2^32 - 1 个元素（受内存限制）</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">原子性</td>
+					<td style="text-align: center">单条命令原子执行</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="set应用场景">
+<a class="header-anchor" href="#set%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af"></a>
+Set应用场景
+</h2><table>
+	<thead>
+			<tr>
+					<th style="text-align: center">场景</th>
+					<th style="text-align: center">说明</th>
+					<th style="text-align: center">常用命令</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">标签系统</td>
+					<td style="text-align: center">给文章、用户打标签</td>
+					<td style="text-align: center"><code>SADD</code>、<code>SMEMBERS</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">去重</td>
+					<td style="text-align: center">统计独立用户、IP</td>
+					<td style="text-align: center"><code>SADD</code>、<code>SCARD</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">共同好友</td>
+					<td style="text-align: center">求两个用户共同关注</td>
+					<td style="text-align: center"><code>SINTER</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">可能认识的人</td>
+					<td style="text-align: center">差集推荐</td>
+					<td style="text-align: center"><code>SDIFF</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">抽奖</td>
+					<td style="text-align: center">随机抽取中奖者</td>
+					<td style="text-align: center"><code>SRANDMEMBER</code>、<code>SPOP</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">点赞</td>
+					<td style="text-align: center">记录点赞用户，防止重复</td>
+					<td style="text-align: center"><code>SADD</code>、<code>SISMEMBER</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">关注模型</td>
+					<td style="text-align: center">关注、粉丝集合</td>
+					<td style="text-align: center"><code>SADD</code>、<code>SINTER</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">黑名单/白名单</td>
+					<td style="text-align: center">快速判断是否在集合中</td>
+					<td style="text-align: center"><code>SISMEMBER</code></td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="redis命令-set类型">
+<a class="header-anchor" href="#redis%e5%91%bd%e4%bb%a4-set%e7%b1%bb%e5%9e%8b"></a>
+Redis命令： Set类型
+</h2><table>
+	<thead>
+			<tr>
+					<th>命令</th>
+					<th>作用</th>
+					<th>复杂度</th>
+					<th>常用度</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>SADD</code></td>
+					<td>添加一个或多个元素</td>
+					<td>O(N)</td>
+					<td>⭐⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SREM</code></td>
+					<td>删除一个或多个元素</td>
+					<td>O(N)</td>
+					<td>⭐⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SCARD</code></td>
+					<td>获取元素数量</td>
+					<td>O(1)</td>
+					<td>⭐⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SMEMBERS</code></td>
+					<td>获取所有元素</td>
+					<td>O(N)</td>
+					<td>⭐⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SISMEMBER</code></td>
+					<td>判断元素是否存在</td>
+					<td>O(1)</td>
+					<td>⭐⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SMISMEMBER</code></td>
+					<td>批量判断多个元素是否存在</td>
+					<td>O(N)</td>
+					<td>⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SRANDMEMBER</code></td>
+					<td>随机获取元素（不删除）</td>
+					<td>O(N)</td>
+					<td>⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SPOP</code></td>
+					<td>随机弹出元素（删除）</td>
+					<td>O(1)</td>
+					<td>⭐⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SMOVE</code></td>
+					<td>原子移动元素到另一个 Set</td>
+					<td>O(1)</td>
+					<td>⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SINTER</code></td>
+					<td>交集</td>
+					<td>O(N*M)</td>
+					<td>⭐⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SINTERSTORE</code></td>
+					<td>交集并存储</td>
+					<td>O(N*M)</td>
+					<td>⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SUNION</code></td>
+					<td>并集</td>
+					<td>O(N)</td>
+					<td>⭐⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SUNIONSTORE</code></td>
+					<td>并集并存储</td>
+					<td>O(N)</td>
+					<td>⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SDIFF</code></td>
+					<td>差集</td>
+					<td>O(N)</td>
+					<td>⭐⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SDIFFSTORE</code></td>
+					<td>差集并存储</td>
+					<td>O(N)</td>
+					<td>⭐⭐</td>
+			</tr>
+			<tr>
+					<td><code>SSCAN</code></td>
+					<td>增量迭代元素</td>
+					<td>O(1)/次</td>
+					<td>⭐⭐</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="sortedset">
+<a class="header-anchor" href="#sortedset"></a>
+SortedSet
+</h2><p>Redis Sorted Set（有序集合，简称 ZSet）是一个**元素不重复、每个元素关联一个 score（分数）**的集合。
+Redis 会根据 score 自动对元素排序，score 相同则按元素字典序排列。
+它非常适合做排行榜、延时队列、带权重的范围查询等。</p>
+        
+        <hr><p>本文2026-09-01首发于<a href='//localhost:1313/'>Phoenix</a>，最后修改于2026-09-01</p>]]>
+      </description>
+      
+        <category>工具</category>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phoenix</title>
+    <link>//localhost:1313/en/</link>
+    <description>Recent content from Phoenix</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    
+    <managingEditor>2388468249@qq.com (Phoenix)</managingEditor>
+    <webMaster>2388468249@qq.com (Phoenix)</webMaster>
+    
+    <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
+    
+    <lastBuildDate>Wed, 15 Mar 2023 11:00:00 -0700</lastBuildDate>
+    
+    
+    <atom:link href="//localhost:1313/en/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>Hello World</title>
+      <link>//localhost:1313/en/post/hello/</link>
+      <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
+      <author>2388468249@qq.com (Phoenix)</author>
+      <guid>//localhost:1313/en/post/hello/</guid>
+      <description>
+        <![CDATA[<h1>Hello World</h1><p>Author: Phoenix(2388468249@qq.com)</p>
+        
+          <p>💘 博麗 霊夢 💘</p>
+        
+        <hr><p>Published on 2023-03-15 at <a href='//localhost:1313/'>Phoenix</a>, last modified on 2023-03-15</p>]]>
+      </description>
+      
+    </item>
+    
+  </channel>
+</rss>
