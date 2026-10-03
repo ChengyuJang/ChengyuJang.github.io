@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = '"https://chengyujang.github.io/"'
 title = 'Phoenix'
 locale = 'zh-CN'
 theme = "reimu"
