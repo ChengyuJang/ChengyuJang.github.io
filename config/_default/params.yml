@@ -699,20 +699,28 @@ injector:
   body_begin:
   body_end: |
     <script>
-      (function() {
-        function fixLoop() {
-          var el = document.querySelector('.aplayer');
-          if (el && el.player && el.player.options) {
-            if (el.player.options.loop !== 'all') {
-              el.player.options.loop = 'all';
-              el.player.loop = 'all';
-              console.log('[FixLoop] 播放器循环模式已修正为 all');
-            }
-          }
-        }
-        fixLoop();
-        setInterval(fixLoop, 1000);
-      })();
+    let bound = false;
+    function bindEndedHandler() {
+      const apWrap = document.querySelector('.aplayer');
+      if (!apWrap || !apWrap.player) {
+        return;
+      }
+      const player = apWrap.player;
+      if(bound) return;
+      bound = true;
+
+      player.on('ended', function () {
+        player.next();
+      });
+      console.log("✅播放器事件绑定完成");
+    }
+    // 持续检测，最长10秒等待播放器初始化
+    setInterval(bindEndedHandler, 700);
+
+    document.addEventListener('pjax:complete', () => {
+      bound = false;
+      setTimeout(bindEndedHandler, 800);
+    });
     </script>
   sidebar_begin:
   sidebar_end:
