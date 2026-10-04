@@ -697,7 +697,19 @@ injector:
       }
     </style>
   body_begin:
-  body_end:
+  body_end: |
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var aplayerElement = document.querySelector('.aplayer');
+          if (aplayerElement && aplayerElement.player) {
+            aplayerElement.player.options.loop = 'all';
+            aplayerElement.player.loop = 'all';
+            console.log('播放器循环模式已修正为 all');
+          }
+        }, 2000);
+      });
+    </script>
   sidebar_begin:
   sidebar_end:
 
