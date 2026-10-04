@@ -697,31 +697,7 @@ injector:
       }
     </style>
   body_begin:
-  body_end: |
-    <script>
-    let bound = false;
-    function bindEndedHandler() {
-      const apWrap = document.querySelector('.aplayer');
-      if (!apWrap || !apWrap.player) {
-        return;
-      }
-      const player = apWrap.player;
-      if(bound) return;
-      bound = true;
-
-      player.on('ended', function () {
-        player.next();
-      });
-      console.log("✅播放器事件绑定完成");
-    }
-    // 持续检测，最长10秒等待播放器初始化
-    setInterval(bindEndedHandler, 700);
-
-    document.addEventListener('pjax:complete', () => {
-      bound = false;
-      setTimeout(bindEndedHandler, 800);
-    });
-    </script>
+  body_end:
   sidebar_begin:
   sidebar_end:
 
