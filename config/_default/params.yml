@@ -699,16 +699,20 @@ injector:
   body_begin:
   body_end: |
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-          var aplayerElement = document.querySelector('.aplayer');
-          if (aplayerElement && aplayerElement.player) {
-            aplayerElement.player.options.loop = 'all';
-            aplayerElement.player.loop = 'all';
-            console.log('播放器循环模式已修正为 all');
+      (function() {
+        function fixLoop() {
+          var el = document.querySelector('.aplayer');
+          if (el && el.player && el.player.options) {
+            if (el.player.options.loop !== 'all') {
+              el.player.options.loop = 'all';
+              el.player.loop = 'all';
+              console.log('[FixLoop] 播放器循环模式已修正为 all');
+            }
           }
-        }, 2000);
-      });
+        }
+        fixLoop();
+        setInterval(fixLoop, 1000);
+      })();
     </script>
   sidebar_begin:
   sidebar_end:
