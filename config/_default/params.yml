@@ -719,7 +719,7 @@ injector:
 
 # Experimental, may have a lot of bugs, open with caution!
 pjax:
-  enable: true
+  enable: false
 
 # Experimental
 # https://github.com/GoogleChromeLabs/quicklink
