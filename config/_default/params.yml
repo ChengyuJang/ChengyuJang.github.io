@@ -747,9 +747,9 @@ player:
       audio: []          # 使用 meting 时保持为空，会被自动覆盖
       fixed: true
       autoplay: false    # 建议设为 false，避免浏览器自动播放限制
-      loop: all
-      order: list
-      preload: auto
+      loop: "all"
+      order: "list"
+      preload: "auto"
       volume: 0.7
       mutex: true
       listFolded: false
